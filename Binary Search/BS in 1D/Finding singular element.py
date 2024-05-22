@@ -5,7 +5,7 @@ def singularBruteForce(nums):
         xor ^= i
     return xor
 
-# Approach: 
+# Approach: Apply Binary Search
 def singularOptimal(arr):
     n = len(arr)  # Size of the array
 
