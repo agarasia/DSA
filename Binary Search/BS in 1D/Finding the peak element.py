@@ -30,6 +30,7 @@ def peakElementOptimal(nums):
         # Otherwise, we are on the right of the peak
         else:
             high = mid - 1
+# T(n) = O(log n)
         
 
 nums = [1,2,3,1]
