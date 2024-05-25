@@ -29,7 +29,7 @@ def minTimeToEat(piles, time):
             return i
     
     return maxI
-
+# T(n) = O(n * maxI)
 
 # Approach: Employ Binary Search to prune the search space
 def minTimeToEatOptimal(piles, time):
@@ -57,7 +57,7 @@ def minTimeToEatOptimal(piles, time):
             low = mid + 1
     
     return low
-
+# T(n) = O(n * log(maxI))
 
 piles = [3, 6, 7, 11]
 time = 8
