@@ -16,43 +16,34 @@ def max1sBruteForce(mat):
 
 # Approach: For each row, find the first and last occurence
 #           of 1s, the one with the most difference is our answer.
-def lastOccurence(row):
-    low, high = 0, len(row)-1
-    ans = -1
+def lowerBound(arr, n, x):
+    low = 0
+    high = n - 1
+    ans = n
 
     while low <= high:
-        mid = low + (high - low)//2
-        if row[mid] > 0:
-            low = mid + 1
-        else:
-            high = mid - 1
-    
-    return high
-        
-
-def firstOccurence(row):
-    low, high = 0, len(row)-1
-    ans = -1
-
-    while low <= high:
-        mid = low + (high - low)//2
-        if row[mid] > 0:
+        mid = (low + high) // 2
+        # maybe an answer
+        if arr[mid] >= x:
+            ans = mid
+            # look for smaller index on the left
             high = mid - 1
         else:
-            low = mid + 1
-    
-    return low
+            low = mid + 1  # look on the right
+    return ans
 
-def max1sOptimal(mat):
-    row = len(mat)
-    ans = -1
-    sumRow = -1
-    for i in range(row):
-        first, last = firstOccurence(mat[i]), lastOccurence(mat[i])
-        sum = last - first
-        if sum > sumRow:
-            sumRow = sum
-            ans = i
+def max1sOptimal(matrix):
+    cnt_max = 0
+    index = -1
+
+    # traverse the rows:
+    for i in range(len(matrix)):
+        # get the number of 1's:
+        cnt_ones = len(matrix[i]) - lowerBound(matrix[i], len(matrix[i]), 1)
+        if cnt_ones > cnt_max:
+            cnt_max = cnt_ones
+            index = i
+    return index
     
     return ans
 # T(n) = O(m * log n) where
