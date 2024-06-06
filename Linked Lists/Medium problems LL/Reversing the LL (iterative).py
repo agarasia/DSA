@@ -35,7 +35,7 @@ class LL:
             curr = nextNode
         
         self.head = prev
-        
+    # T(n) = O(n)   
 
 
 ll = LL()
