@@ -39,6 +39,7 @@ class LL:
         for i in aux:
             curr.data = i
             curr = curr.next
+    # T(n)= O(n logn)
 
 ll = LL()
 ll.append(Node(1))
