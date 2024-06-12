@@ -58,7 +58,7 @@ class DLL:
         while ptr2.next:
             ptr2 = ptr2.next
 
-        while ptr1 != ptr2:
+        while ptr1 != ptr2 and ptr2.next != ptr1:
             total = ptr1.data + ptr2.data
 
             if total == target:
