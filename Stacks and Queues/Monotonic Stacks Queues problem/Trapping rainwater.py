@@ -1,5 +1,26 @@
 # Approach: Find the maximum amount of water that can be collected
 #           at each index.
+def waterTrappedBruteForce(heights):
+    n = len(heights)
+    waterTrapped = 0
+    lMax, rMax = 0, 0
+
+    for i in range(n):
+        j = i
+        while j >= 0:
+            lMax = max(lMax, heights[j])
+            j -= 1
+        
+        j = i
+        while j < n:
+            rMax = max(rMax, heights[j])
+            j += 1
+        
+        waterTrapped += min(lMax, rMax) - heights[i]
+    
+    return waterTrapped
+# T(n) = O(n**2), S(n) = O(1)
+
 def waterTrapped(heights):
     n = len(heights)
     prefix, suffix = [0]*n, [0]*n
