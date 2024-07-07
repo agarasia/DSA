@@ -12,6 +12,8 @@ def numberOfSubarraysBruteForce(nums, k):
         return ans
     
     return atMost(k) - atMost(k-1)
+# T(n) = O(n**2)
+# S(n) = O(n)
 
 # Approach: Employ sliding window to find the number of
 #           subarrays with at most K different integers
