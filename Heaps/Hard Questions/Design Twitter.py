@@ -26,7 +26,8 @@ class TwitterBruteForce:
     def unfollow(self, followerId: int, followeeId: int) -> None:
         if followeeId in self.following[followerId]:
             self.following[followerId].remove(followeeId)
-# T(n) O(1)ForPosttweet ,O(N)ForGetnewsfeed, O(1)ForFollow, O(1)ForUnfollow
+# T(n) = O(1)ForPosttweet ,O(N)ForGetnewsfeed, O(1)ForFollow, O(1)ForUnfollow
+# S(n) = O(n)
 
 t = TwitterBruteForce()
 t.postTweet(1, 5)
