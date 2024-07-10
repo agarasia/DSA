@@ -1,3 +1,5 @@
+import heapq
+
 class KthLargestBruteForce:
 
     def __init__(self, k: int, nums: list[int]):
@@ -16,43 +18,19 @@ class KthLargestBruteForce:
 # S(n) = O(n)
 
 class KthLargestOptimal:
-    def __init__(self, k, nums):
+    def __init__(self, k: int, nums: list[int]):
         self.k = k
-        self.heap = []
+        self.heap = nums
+        heapq.heapify(self.heap)
         
-        # Initialize the heap with the first k elements from nums
-        for num in nums:
-            self.add(num)
-    
-    def _sift_up(self, idx):
-        parent = (idx - 1) // 2
-        while idx > 0 and self.heap[parent] > self.heap[idx]:
-            self.heap[parent], self.heap[idx] = self.heap[idx], self.heap[parent]
-            idx = parent
-            parent = (idx - 1) // 2
-    
-    def _sift_down(self, idx):
-        child = 2 * idx + 1
-        while child < len(self.heap):
-            right = child + 1
-            if right < len(self.heap) and self.heap[child] > self.heap[right]:
-                child = right
-            if self.heap[idx] <= self.heap[child]:
-                break
-            self.heap[idx], self.heap[child] = self.heap[child], self.heap[idx]
-            idx = child
-            child = 2 * idx + 1
-    
-    def add(self, val):
-        if len(self.heap) < self.k:
-            self.heap.append(val)
-            self._sift_up(len(self.heap) - 1)
-        elif val > self.heap[0]:
-            self.heap[0] = val
-            self._sift_down(0)
-        
-        return self.heap[0] if len(self.heap) == self.k else None
+        while len(self.heap) > k:
+            heapq.heappop(self.heap)
 
+    def add(self, val: int) -> int:
+        heapq.heappush(self.heap, val)
+        if len(self.heap) > self.k:
+            heapq.heappop(self.heap)
+        return self.heap[0]
 
 bruteForce = KthLargestBruteForce(3, [4, 5, 8, 2])
 print(bruteForce.add(3))
