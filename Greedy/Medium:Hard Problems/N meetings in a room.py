@@ -2,7 +2,7 @@
 #           so that a room is free at the very next meeting.
 def numberOfMeetings(start, end):
     meetings = []
-    for i in range(n):
+    for i in range(len(start)):
         meetings.append([start[i], end[i]])
     
     sorted_meetings = sorted(meetings, key=lambda x: x[1])
