@@ -12,7 +12,7 @@ def numOfCoins(V, coins):
 # T(n) = O(V)
 # S(n) = O(1)
 
-V = 49
+V = 70
 coins = [1, 2, 5, 10, 20, 50, 100, 500, 1000]
 
 print(numOfCoins(V, coins))
