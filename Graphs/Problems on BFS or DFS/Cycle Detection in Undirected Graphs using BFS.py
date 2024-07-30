@@ -4,6 +4,7 @@ def isCycle(V, adj):
     visited = set()
 
     def hasCycle(vertex):
+        visited.add(vertex)
         queue = deque()
         queue.append([vertex, -1])
 
