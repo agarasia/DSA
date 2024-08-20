@@ -30,7 +30,8 @@ def minimumEffortPath(heights):
                     heappush(min_heap, (next_effort, nr, nc))
     
     return 0
-
+# T(n) = O(M * N * Log(M * N))
+# S(n) = O(M * N)
 
 
 heights = [[1,2,2],[3,8,2],[5,3,5]]
